@@ -1,11 +1,14 @@
-# Node definition for 2D K-d tree
+# Build and search in a 2D K-d tree
+# by Karen Araceli Palacio Pastor
+# July 2023
+
+
 class Node2D:
     def __init__(self, point):
         self.point = point
         self.left = None
         self.right = None
 
-# Function to build 2D K-d tree
 def build_kd_tree(points, depth=0):
     if not points:
         return None
@@ -23,19 +26,17 @@ def build_kd_tree(points, depth=0):
     return node
 
 # Data points for 2D K-d tree construction
-#data_points = [(51, 75), (25, 40), (10, 30), (1, 10), (35, 90), (50, 50), (70, 70), (55, 1), (60, 80)]
-#data_points = [(51, 75), (25, 40),(70, 70), (10, 30), (35, 90),(55, 1), (60,80), (1, 10),(50, 50)]
 data_points =[
-    (51, 75),   # Root node
-    (25, 40),   # Left child of the root
-    (70, 70),   # Right child of the root
-    (10, 30),   # Left child of (25, 40)
-    (35, 90),   # Right child of (10, 30)
-    (60, 80),   # Right child of (70, 70)
-    (1, 10),    # Left child of (35, 90)
-    (55, 1),    # Left child of (60, 80)
+    (51, 75),
+    (25, 40),
+    (70, 70),
+    (10, 30),
+    (35, 90),
+    (60, 80),
+    (1, 10),
+    (55, 1),
 ]
-# Build the 2D K-d tree
+
 root_node = build_kd_tree(data_points)
 
 # Now, the 'root_node' represents the root of the constructed 2D K-d tree.
@@ -63,7 +64,6 @@ print_kd_tree_ascii(root_node)
 
 
 
-# Function to calculate Euclidean distance between two K-dimensional points
 def calculate_euclidean_distance_KD(point1, point2):
     return sum((x - y) ** 2 for x, y in zip(point1, point2)) ** 0.5
 
@@ -90,25 +90,42 @@ def find_points_within_radius_KD(node, query_point, R, depth=0):
     return result_list
 
 # Usage example for K-dimensional points:
-query_point = (25,65) #q_x1, q_x2, q_x3, ..., q_xK)  # K-dimensional query point
-R = 25  # Given radius R
+query_point = (25,65) 
+# in a K-dim query point, query_point would look like
+# query_point = (q_x1, q_x2, q_x3, ..., q_xK)
 
+# Comb through the kd tree with different Rs
+R = 25
 result_list = find_points_within_radius_KD(root_node, query_point, R)
-print(R)
+print("\********************/")
+print("searching elements within EUCL distance of: "+ str(R))
 print(result_list)
+print("The corresponding distances are:")
 print([calculate_euclidean_distance_KD(node, query_point) for node in result_list])
 R=30
 result_list = find_points_within_radius_KD(root_node, query_point, R)
-print(R)
+print()
+print("\********************/")
+print("searching elements within EUCL distance of: "+ str(R))
 print(result_list)
+print()
+print("The corresponding distances are:")
 print([calculate_euclidean_distance_KD(node, query_point) for node in result_list])
 R=40
 result_list = find_points_within_radius_KD(root_node, query_point, R)
-print(R)
+print()
+print("\********************/")
+print("searching elements within EUCL distance of: "+ str(R))
 print(result_list)
+print()
+print("The corresponding distances are:")
 print([calculate_euclidean_distance_KD(node, query_point) for node in result_list])
 R=50
 result_list = find_points_within_radius_KD(root_node, query_point, R)
-print(R)
+print()
+print("\********************/")
+print("searching elements within EUCL distance of: "+ str(R))
 print(result_list)
+print()
+print("The corresponding distances are:")
 print([calculate_euclidean_distance_KD(node, query_point) for node in result_list])
