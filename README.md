@@ -1,3 +1,11 @@
+Test for m1-advanced data structures, ECI36, 2023
+====================================================
+
+# Author
+Karen Araceli Palacio Pastor
+
+karen.palacio.1994@gmail.com
+
 # Contents
 
 in build_and_search_kd_tree.py you can find the code corresponding to the implementation in python of the pseudocode given as an answer to the point number 6 of the test.
