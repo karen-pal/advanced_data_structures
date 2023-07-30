@@ -9,8 +9,20 @@ class TSTNode:
 
 
 class TST:
+
     def __init__(self):
         self.root = None
+    def print_structure(self):
+        def print_recursive(node, level=0, prefix=""):
+            if node:
+                print(' ' * (level * 4) + '|-- ' + node.char)
+                print_recursive(node.left, level + 1, prefix)
+                if node.is_end_of_word:
+                    print(' ' * ((level + 1) * 4) + '|-- ' +  "#")
+                print_recursive(node.middle, level + 1, prefix + node.char)
+                print_recursive(node.right, level + 1, prefix)
+
+        print_recursive(self.root)
 
     def insert(self, word):
         def insert_recursive(node, char_index):
@@ -80,9 +92,13 @@ class TST:
 # Example usage:
 tst = TST()
 words = ["apple", "apricot", "banana", "apartment", "apex", "ball", "cat", "dog", "cataract"]
+
+print(words)
+
 for word in words:
     tst.insert(word)
 
+tst.print_structure()
 prefix = "ap"
 words_with_prefix = tst.list_words_with_prefix(prefix)
 print(f"Words with prefix '{prefix}': {words_with_prefix}")
